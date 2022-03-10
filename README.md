@@ -12,5 +12,7 @@ dvc init
 dvc add data_given/winequality.csv
 git add .
 git commit -m "message type"
+create a remote repository and push the changes
+git remote add origin https://github.com/Sagar-modelling/DVC_MLOPS.git
 git push origin main
 ```
