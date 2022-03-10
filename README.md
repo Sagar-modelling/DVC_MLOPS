@@ -14,5 +14,7 @@ git add .
 git commit -m "message type"
 create a remote repository and push the changes
 git remote add origin https://github.com/Sagar-modelling/DVC_MLOPS.git
+git branch #check your git branch and change it to main branch instead of master branch
+git branch -M main
 git push origin main
 ```
