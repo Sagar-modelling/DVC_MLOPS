@@ -17,4 +17,7 @@ git remote add origin https://github.com/Sagar-modelling/DVC_MLOPS.git
 git branch #check your git branch and change it to main branch instead of master branch
 git branch -M main
 git push origin main
+git remote remove origin
+git remote add origin https://github.com/Sagar-modelling/DVC_MLOPS.git
+git push -f orgin main
 ```
