@@ -6,10 +6,11 @@ conda activate <env name>
 touch requirements.txt
 pip install -r requirements.txt
 touch README.md
-
+touch template.py
+mkdir data_given
 git init #It can be used to convert an existing, unversioned project to a Git repository or initialize a new, empty repository.
 dvc init
-dvc add data_given/winequality.csv
+dvc add data_given/winequality.csv #to start tracking the data
 git add .
 git commit -m "message type"
 create a remote repository and push the changes
