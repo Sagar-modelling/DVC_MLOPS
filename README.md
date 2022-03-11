@@ -21,4 +21,10 @@ git push origin main
 git remote remove origin
 git remote add origin https://github.com/Sagar-modelling/DVC_MLOPS.git
 git push -f orgin main
+
+#loading the data
+touch src/get_data.py
+touch src/load_data.py
+#update the stages in dvc.yaml files
+dvc repro #reproduce
 ```
