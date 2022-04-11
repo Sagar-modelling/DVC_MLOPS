@@ -7,28 +7,54 @@ stages:
       md5: ccc8d3507eb151f53f760d36abdef888
       size: 91998
     - path: src/get_data.py
-      md5: 917143f8ccb96aaa3c94542af5d5d7d3
-      size: 787
+      md5: 875092c3fdae8bd3d4a41458a888d916
+      size: 990
     - path: src/load_data.py
-      md5: 61fdcc0c807bd43c8ced767956c2a2a3
-      size: 809
+      md5: 6fe3a8fb6921b5c719808027b26fc67a
+      size: 817
     outs:
     - path: data/raw/winequality.csv
-      md5: dcb9f7736a81b73cf4cf803b5ef3f07e
+      md5: 4f6c2e932c5399e986bd3c3824439b3b
       size: 102550
   split_data:
     cmd: python src/split_data.py --config=params.yaml
     deps:
     - path: data/raw/winequality.csv
-      md5: dcb9f7736a81b73cf4cf803b5ef3f07e
+      md5: 4f6c2e932c5399e986bd3c3824439b3b
       size: 102550
     - path: src/split_data.py
       md5: fc885f9c00eefc717b9f269c72e11300
       size: 1181
     outs:
     - path: data/processed/test_winequality.csv
-      md5: a4fb6bcf177eaaa37b5e69668789839b
+      md5: aff5d2ec71e7367ad385a2d7e8d07e84
       size: 29031
     - path: data/processed/train_winequality.csv
-      md5: 4960dcc231aed31ab923356111335735
+      md5: ee82469067b562a1481d15b2417a1ba6
       size: 67736
+  train_and_evaluate:
+    cmd: python src/train_and_evaluate.py --config=params.yaml
+    deps:
+    - path: data/processed/test_winequality.csv
+      md5: aff5d2ec71e7367ad385a2d7e8d07e84
+      size: 29031
+    - path: data/processed/train_winequality.csv
+      md5: ee82469067b562a1481d15b2417a1ba6
+      size: 67736
+    - path: src/train_and_evaluate.py
+      md5: 9fc1f42831b7764b1bd6e3124ede7f3d
+      size: 2617
+    params:
+      params.yaml:
+        estimators.ElasticNet.params.alpha: 0.88
+        estimators.ElasticNet.params.l1_ratio: 0.89
+    outs:
+    - path: reports/params.json
+      md5: 0568f34313ba7c5e55128b75dbcbee5c
+      size: 46
+    - path: reports/scores.json
+      md5: e68fc3227eaba5a0b9e80174b4066ddc
+      size: 100
+    - path: saved_models/model.joblib
+      md5: 2a90967c6a7740c8add61a0923838ff0
+      size: 1316

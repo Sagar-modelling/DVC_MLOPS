@@ -19,9 +19,9 @@ files = [                   #files
         "dvc.yaml",
         "params.yaml",
         ".gitignore",
-        os.path.join("src","__init__.py")
+        os.path.join("src","__init__.py") #To treat src as a package
 ]
 
-for file_ in files:
+for file_ in files: #creating the files
     with open(file_, "w") as f:
         pass
